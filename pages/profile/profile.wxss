@@ -1,0 +1,297 @@
+
+.container {
+padding: 20rpx;
+background-color: #f5f7fa; 
+min-height: 100vh;
+}
+
+/* ------------------- 登录卡片样式 ------------------- */
+.login-card {
+background-color: #fff;
+padding: 40rpx;
+margin-top: 100rpx;
+border-radius: 20rpx;
+box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+font-size: 48rpx;
+font-weight: bold;
+color: #4a5568;
+margin-bottom: 50rpx;
+text-align: center;
+}
+
+.input-area {
+margin-bottom: 40rpx;
+}
+
+.input-group {
+display: flex;
+align-items: center;
+border-bottom: 1px solid #e2e8f0;
+padding: 20rpx 0;
+margin-bottom: 20rpx;
+}
+
+.label {
+width: 120rpx;
+font-size: 30rpx;
+color: #718096;
+}
+
+.input-control {
+flex: 1;
+font-size: 30rpx;
+padding-left: 20rpx;
+}
+
+.login-btn {
+/* 渐变蓝 */
+background: linear-gradient(135deg, #4c7cff, #6f95ff);
+color: white;
+font-weight: bold;
+border-radius: 10rpx;
+margin-top: 40rpx;
+box-shadow: 0 4rpx 10rpx rgba(76, 124, 255, 0.4);
+height: 90rpx;
+line-height: 90rpx;
+}
+
+.register-link {
+text-align: center;
+margin-top: 30rpx;
+color: #4c7cff;
+font-size: 28rpx;
+}
+
+
+.profile-header-card {
+
+background: linear-gradient(135deg, #6b77b7, #4c7cff);
+padding: 40rpx 30rpx;
+border-radius: 25rpx;
+box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.15);
+color: white;
+margin-bottom: 30rpx;
+}
+
+.user-info {
+display: flex;
+align-items: center;
+padding-bottom: 30rpx;
+border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar {
+width: 120rpx;
+height: 120rpx;
+background-color: rgba(255, 255, 255, 0.2);
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 30rpx;
+}
+
+.avatar text {
+font-size: 60rpx;
+color: white;
+}
+
+.details {
+display: flex;
+flex-direction: column;
+}
+
+.username {
+font-size: 38rpx;
+font-weight: bold;
+margin-bottom: 5rpx;
+}
+
+.status {
+font-size: 24rpx;
+opacity: 0.8;
+}
+
+/* 统计数据 */
+.stats-area {
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-top: 30rpx;
+}
+
+.stat-item {
+text-align: center;
+padding: 0 10rpx;
+}
+
+.stat-value {
+font-size: 42rpx;
+font-weight: bold;
+margin-bottom: 5rpx;
+}
+
+.stat-label {
+font-size: 24rpx;
+opacity: 0.9;
+}
+
+.stat-divider {
+width: 1px;
+height: 60rpx;
+background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ------------------- 订单 Tab 切换 ------------------- */
+.order-tabs-card {
+display: flex;
+justify-content: space-around;
+background-color: #ffffff;
+border-radius: 25rpx;
+box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+margin-bottom: 30rpx;
+padding: 10rpx 0;
+}
+
+.tab-item {
+padding: 20rpx 0;
+font-size: 30rpx;
+color: #718096;
+position: relative;
+font-weight: 500;
+transition: color 0.3s;
+}
+
+.active-tab {
+color: #4c7cff;
+}
+
+.active-tab::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 15%;
+width: 70%;
+height: 6rpx;
+background-color: #4c7cff;
+border-radius: 3rpx;
+}
+
+/* ------------------- 订单列表样式 ------------------- */
+.order-list {
+margin-bottom: 30rpx;
+}
+
+.order-item-card {
+background-color: #ffffff;
+padding: 30rpx;
+border-radius: 15rpx;
+margin-bottom: 20rpx;
+box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15rpx;
+padding-bottom: 15rpx;
+border-bottom: 1px dashed #e2e8f0;
+}
+
+.order-type {
+font-size: 28rpx;
+font-weight: bold;
+color: #4c7cff;
+}
+
+.order-status {
+font-size: 26rpx;
+padding: 5rpx 15rpx;
+border-radius: 8rpx;
+font-weight: 600;
+}
+
+/* 订单状态颜色定义 /
+.status-PENDING { background-color: #fff3c9; color: #d69e2e; } / 待处理 (黄色) /
+.status-ACCEPTED { background-color: #d1e7ff; color: #4c7cff; } / 已接受 (蓝色) /
+.status-DELIVERED { background-color: #d6f6e5; color: #38a169; } / 已送达 (浅绿) /
+.status-COMPLETED { background-color: #e6ffed; color: #38a169; } / 已完成 (深绿) /
+.status-CANCELLED { background-color: #ffe8e8; color: #e53e3e; } / 已取消 (红色) */
+
+.description {
+font-size: 32rpx;
+font-weight: 600;
+color: #2d3748;
+margin-bottom: 15rpx;
+}
+
+.location-info {
+display: flex;
+font-size: 26rpx;
+color: #718096;
+margin-bottom: 15rpx;
+}
+
+.pickup {
+margin-right: 30rpx;
+}
+
+.price-info {
+text-align: right;
+}
+
+.price {
+font-size: 34rpx;
+font-weight: bold;
+color: #e53e3e; /* 醒目的红色 */
+}
+
+.order-actions {
+margin-top: 20rpx;
+display: flex;
+justify-content: flex-end;
+}
+
+.action-btn {
+font-size: 28rpx;
+padding: 0 30rpx;
+height: 60rpx;
+line-height: 60rpx;
+border-radius: 10rpx;
+margin-left: 15rpx;
+border: none;
+}
+
+.cancel-btn {
+background-color: #f7fafc;
+color: #a0aec0;
+border: 1px solid #e2e8f0;
+}
+
+.complete-btn {
+background-color: #4c7cff;
+color: white;
+}
+
+.empty-state {
+text-align: center;
+padding: 100rpx 0;
+color: #a0aec0;
+font-size: 30rpx;
+}
+
+/* ------------------- 退出按钮 ------------------- */
+.logout-btn {
+background-color: #e2e8f0;
+color: #4a5568;
+font-weight: 500;
+border-radius: 10rpx;
+margin: 40rpx 0;
+height: 90rpx;
+line-height: 90rpx;
+font-size: 32rpx;
+}

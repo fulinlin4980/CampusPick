@@ -1,0 +1,162 @@
+/* components/taskCard/taskCard.wxss */
+.task-card-container {
+    background-color: #fff;
+    border-radius: 20rpx; /* rounded-xl */
+    padding: 30rpx; /* p-4 */
+    box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.08); /* shadow-sm */
+    border: 1rpx solid #f3f4f6; /* border-gray-100 */
+    margin-bottom: 30rpx;
+    transition: box-shadow 0.2s;
+  }
+  .task-card-container:active {
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1); /* hover:shadow-md */
+  }
+  
+  /* --- 1. Header --- */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16rpx; 
+  }
+  
+  /* 任务类型标签 */
+  .task-type-label {
+      font-size: 32rpx;
+      font-weight: bold;
+      color: #1f2937;
+  }
+  
+  /* 状态徽章 */
+  .status-badge {
+    font-size: 24rpx; 
+    padding: 6rpx 16rpx; 
+    border-radius: 9999rpx; 
+    font-weight: 500;
+  }
+  .badge-yellow { background-color: #fef3c7; color: #92400e; }
+  .badge-blue { background-color: #dbeafe; color: #1e40af; }
+  .badge-purple { background-color: #ede9fe; color: #5b21b6; }
+  .badge-green { background-color: #d1fae5; color: #065f46; }
+  .badge-gray { background-color: #f3f4f6; color: #6b7280; }
+  
+  /* 时间信息 */
+  .time-footer {
+      display: flex;
+      align-items: center;
+      color: #6b7280; 
+      font-size: 24rpx;
+      margin-bottom: 24rpx;
+  }
+  .icon-clock {
+      font-size: 26rpx;
+      margin-right: 8rpx;
+      opacity: 0.8;
+  }
+  
+  /* --- New: Pickup Code Box --- */
+  .pickup-code-box {
+    /* 确保这个容器在任何状态下都有基础背景 */
+    background-color: #f0fdf4; 
+    border: 1rpx solid #a7f3d0; 
+    padding: 20rpx 24rpx;
+    border-radius: 12rpx;
+    margin-bottom: 32rpx;
+  }
+  /* 取件码可见时的样式 */
+  .pickup-title {
+    font-size: 24rpx;
+    font-weight: 500;
+    color: #065f46; 
+    margin-bottom: 8rpx;
+  }
+  .pickup-content {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #10b981; 
+    letter-spacing: 2rpx;
+  }
+  /* 取件码隐藏时的提示样式 (新增) */
+  .pickup-hidden {
+      padding: 10rpx 0;
+      font-size: 26rpx;
+      color: #4f46e5; /* 突出提示信息的颜色 */
+      text-align: center;
+  }
+  
+  
+  /* --- 2. Route Info --- */
+  .route-info-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32rpx;
+    padding-left: 10rpx;
+  }
+  .route-item { display: flex; align-items: flex-start; }
+  .route-text-container { display: flex; flex-direction: column; }
+  .dot-icon { width: 16rpx; height: 16rpx; border-radius: 50%; margin-top: 6rpx; margin-right: 16rpx; flex-shrink: 0; }
+  .dot-blue { background-color: #3b82f6; }
+  .dot-red { background-color: #ef4444; }
+  .route-line { height: 32rpx; border-left: 4rpx dashed #e5e7eb; margin-left: 6rpx; }
+  .route-label { color: #9ca3af; font-size: 24rpx; display: block; }
+  .route-location { color: #1f2937; font-weight: 600; font-size: 30rpx; }
+  
+  
+  /* --- 3. Description --- */
+  .description-box {
+    background-color: #f9fafb; 
+    border-radius: 12rpx; 
+    padding: 24rpx; 
+    margin-bottom: 24rpx; 
+    font-size: 28rpx; 
+    color: #4b5563; 
+    line-height: 1.4;
+  }
+  .icon-package, .icon-alert {
+    font-size: 28rpx;
+    margin-right: 8rpx;
+  }
+  
+  .cancel-reason {
+    margin-top: 16rpx; 
+    padding-top: 16rpx; 
+    border-top: 1rpx solid #e5e7eb; 
+    font-size: 24rpx; 
+    color: #ef4444; 
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  /* Delivery Requirement Note (拍照提醒) */
+  .delivery-requirement {
+      margin-top: 16rpx;
+      padding-top: 16rpx;
+      border-top: 1rpx dashed #d1d5db; 
+      font-size: 24rpx;
+      color: #4b5563;
+      font-weight: 500;
+  }
+  
+  /* --- 4. Footer --- */
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16rpx; 
+    border-top: 1rpx solid #f3f4f6; 
+  }
+  
+  .price-display {
+    display: flex;
+    align-items: flex-end;
+    color: #ef4444; 
+    font-weight: bold;
+  }
+  .price-symbol { font-size: 28rpx; margin-right: 4rpx; }
+  .price-value { font-size: 36rpx; line-height: 1; }
+  
+  .action-buttons { display: flex; align-items: center; }
+  
+  .status-message { font-size: 24rpx; font-weight: 500; margin-right: 8rpx; }
+  .message-blue { color: #2563eb; }
+  .message-purple { color: #7c3aed; }

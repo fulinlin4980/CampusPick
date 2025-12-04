@@ -1,0 +1,271 @@
+/** pages/orderDetail/orderDetail.wxss **/
+
+/* -------------------- 整体布局 -------------------- */
+.detail-container {
+    padding-bottom: 120rpx; /* 为底部的操作栏留出空间 */
+    background-color: #f7f7f7;
+    min-height: 100vh;
+}
+
+/* 统一卡片样式 */
+.detail-card, .user-card {
+    background-color: #ffffff;
+    margin: 20rpx 30rpx;
+    padding: 30rpx;
+    border-radius: 16rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1rpx solid #eeeeee;
+}
+
+/* -------------------- 状态卡片 (Status Card) -------------------- */
+.status-card {
+    display: flex;
+    align-items: center;
+    padding: 40rpx 30rpx;
+    color: #ffffff;
+    border-radius: 0 0 16rpx 16rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.status-icon text {
+    font-size: 80rpx;
+    line-height: 1;
+    margin-right: 30rpx;
+}
+
+.status-main-text {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.status-sub-text {
+    font-size: 24rpx;
+    opacity: 0.9;
+    margin-top: 8rpx;
+}
+
+/* 状态颜色定义 */
+.status-PENDING {
+    background-color: #ff9800; /* 橙色 */
+}
+.status-ACCEPTED {
+    background-color: #2196f3; /* 蓝色 */
+}
+.status-DELIVERED {
+    background-color: #4caf50; /* 绿色 */
+}
+.status-COMPLETED {
+    background-color: #00bcd4; /* 青色 */
+}
+.status-CANCELLED {
+    background-color: #f44336; /* 红色 */
+}
+
+
+/* -------------------- 订单信息详情 -------------------- */
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.item-label {
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.item-value {
+    font-size: 30rpx;
+    font-weight: 500;
+}
+
+.type-tag {
+    color: #2196f3;
+}
+
+.price-text {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* 路线信息 */
+.detail-location-group {
+    padding: 20rpx 0;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    padding: 10rpx 0;
+}
+
+.location-tag {
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 20rpx;
+    font-weight: bold;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+
+.tag-start {
+    background-color: #ff9800; /* 取货橙色 */
+}
+
+.tag-end {
+    background-color: #2196f3; /* 送货蓝色 */
+}
+
+.location-text {
+    font-size: 30rpx;
+    color: #333333;
+}
+
+/* 描述区域 */
+.detail-description {
+    padding-top: 20rpx;
+}
+
+.description-label {
+    font-size: 28rpx;
+    color: #666666;
+    margin-bottom: 10rpx;
+}
+
+.description-content {
+    font-size: 30rpx;
+    line-height: 1.5;
+    color: #333333;
+    padding: 10rpx 0;
+}
+
+
+/* -------------------- 用户信息 -------------------- */
+.user-info-row {
+    display: flex;
+    padding: 15rpx 0;
+    align-items: center;
+}
+
+.user-role {
+    font-size: 28rpx;
+    color: #666;
+    width: 120rpx;
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-size: 30rpx;
+    color: #333;
+    font-weight: 500;
+}
+
+
+/* -------------------- 底部操作栏 (Action Bar) -------------------- */
+.action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    padding: 20rpx 30rpx;
+    box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* 按钮居中 */
+    align-items: center;
+    z-index: 10;
+}
+
+.action-btn {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 34rpx;
+    border-radius: 44rpx;
+    text-align: center;
+    margin: 0;
+}
+
+/* 按钮颜色和样式 */
+.btn-primary {
+    background-color: #2196f3;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-success {
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-danger-outline {
+    background-color: #ffffff;
+    color: #f44336;
+    border: 2rpx solid #f44336;
+}
+
+.btn-info-outline {
+    background-color: #ffffff;
+    color: #2196f3;
+    border: 2rpx solid #2196f3;
+}
+
+/* 最终状态/等待状态文字 */
+.final-status-text, .waiting-text {
+    font-size: 30rpx;
+    color: #999999;
+    padding: 10rpx 0;
+}
+
+/* 禁用按钮样式 */
+.action-btn[disabled] {
+    opacity: 0.6;
+}
+
+/* 底部操作栏的容器样式 */
+.action-bar-wrapper {
+    position: fixed; /* 固定在底部 */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20rpx 40rpx; /* 上下左右内边距 */
+    background-color: #fff; /* 背景色 */
+    box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05); /* 顶部阴影 */
+    z-index: 100; /* 确保在其他内容之上 */
+}
+
+/* 按钮基础样式 */
+.action-button {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 45rpx;
+    font-size: 34rpx;
+    margin: 0; /* 移除默认margin */
+}
+
+/* 主操作按钮样式 (确认接单) */
+.primary-button {
+    color: white;
+    background-color: #3370ff; /* 示例品牌主色 */
+}
+
+.primary-button[disabled] {
+    background-color: #a4c5ff; /* 禁用时的颜色 */
+    color: #fff;
+}

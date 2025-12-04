@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我的",
+    "usingComponents": {
+      "task-card": "../../components/taskCard/taskCard"
+    }
+  }

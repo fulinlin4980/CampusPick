@@ -1,0 +1,109 @@
+<view class="task-card-container">
+  
+  <view class="card-header">
+    <view class="time-info">
+      <text class="task-type-label">{{taskTypeLabel}}</text>
+    </view>
+    <view class="status-badge {{statusBadge.class}}">
+      {{statusBadge.text}}
+    </view>
+  </view>
+  
+  <view class="time-footer">
+    <text class="icon-clock">⌚</text>
+    发布于 {{formattedTime}}
+  </view>
+
+  <view wx:if="{{task.type === 'express' && isMyTask}}" class="pickup-code-box">
+    <block wx:if="{{canSeePickupCode}}">
+      <view class="pickup-title">🔑 取件码/信息 (仅您可见)</view>
+      <view class="pickup-content">{{task.pickupCode}}</view>
+    </block>
+    <block wx:elif="{{task.status === 'PENDING'}}">
+      <view class="pickup-hidden">
+        💡 **隐私保护：** 请先点击【立即接单】，取件码才会显示。
+      </view>
+    </block>
+    <block wx:else>
+      <view class="pickup-hidden">
+        信息已锁定。
+      </view>
+    </block>
+  </view>
+  
+  <view class="route-info-box">
+    <view class="route-item">
+      <view class="dot-icon dot-blue"></view>
+      <view class="route-text-container">
+        <text class="route-label">取货点</text>
+        <text class="route-location">{{task.pickupLocation || task.campus}}</text>
+      </view>
+    </view>
+    
+    <view class="route-line"></view>
+    
+    <view class="route-item">
+      <view class="dot-icon dot-red"></view>
+      <view class="route-text-container">
+        <text class="route-label">送达点</text>
+        <text class="route-location">{{task.deliveryLocation || task.campus}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="description-box">
+    <text class="icon-package">💬</text>
+    {{task.description || "无备注"}}
+    
+    <view wx:if="{{requirePhoto && isMyTask && task.status === 'ACCEPTED'}}" class="delivery-requirement">
+        📸 **提醒：** 完成任务需**上传送达照片**。
+    </view>
+    
+    <view wx:if="{{task.status === 'CANCELLED' && task.cancelReason}}" class="cancel-reason">
+      <text class="icon-alert">⚠️</text>
+      <text>取消原因: {{task.cancelReason}}</text>
+    </view>
+  </view>
+
+  <view class="card-footer">
+    <view class="price-display">
+      <text class="price-symbol">¥</text>
+      <text class="price-value">{{task.price ? task.price.toFixed(2) : '0.00'}}</text>
+    </view>
+
+    <view class="action-buttons">
+      
+      <block wx:if="{{isMine && task.status === 'PENDING'}}">
+        <mp-button variant="ghost" size="sm" data-action="cancel" bindtap="handleAction">
+          取消
+        </mp-button>
+      </block>
+
+      <block wx:elif="{{!isMine && task.status === 'PENDING'}}">
+        <mp-button variant="primary" size="sm" data-action="accept" bindtap="handleAction"> 
+          立即接单
+        </mp-button>
+      </block>
+
+      <block wx:elif="{{isMyTask && task.status === 'ACCEPTED'}}">
+        <mp-button variant="secondary" size="sm" data-action="delivery" bindtap="handleAction">
+          ✅ 确认送达
+        </mp-button>
+      </block>
+      
+      <block wx:elif="{{isMine && task.status === 'DELIVERED'}}">
+        <mp-button variant="primary" size="sm" data-action="confirmreceipt" bindtap="handleAction">
+          🛒 确认收货
+        </mp-button>
+      </block>
+
+      <block wx:elif="{{isMine && task.status === 'ACCEPTED'}}">
+        <text class="status-message message-blue">同学正在配送中...</text>
+      </block>
+      <block wx:elif="{{isMine && task.status === 'DELIVERED'}}">
+        <text class="status-message message-purple">已送达，请确认</text>
+      </block>
+      
+    </view>
+  </view>
+</view>

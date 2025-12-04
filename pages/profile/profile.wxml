@@ -1,0 +1,125 @@
+<!-- pages/profile/profile.wxml -->
+
+<view class="container">
+
+<!-- 未登录状态：显示登录表单 -->
+<block wx:if="{{!isLoggedIn}}">
+    <view class="login-card">
+        <view class="login-title">欢迎登录</view>
+        <view class="input-area">
+            <view class="input-group">
+                <text class="label">账号</text>
+                <!-- 绑定 handleInput -->
+                <input class="input-control" placeholder="请输入用户名" data-field="username" bindinput="handleInput" value="{{username}}" />
+            </view>
+            <view class="input-group">
+                <text class="label">密码</text>
+                <!-- 绑定 handleInput -->
+                <input class="input-control" placeholder="请输入密码" password type="text" data-field="password" bindinput="handleInput" value="{{password}}" />
+            </view>
+        </view>
+        
+        <!-- 绑定 handleLogin -->
+        <button class="login-btn" bindtap="handleLogin">
+            立即登录
+        </button>
+        <view class="register-link" bindtap="goToRegister">
+            没有账号？去注册
+        </view>
+    </view>
+</block>
+
+<!-- 登录状态：美观的个人信息展示 -->
+<block wx:else>
+    <!-- 头部用户卡片：渐变背景设计 -->
+    <view class="profile-header-card">
+        <view class="user-info">
+            <!-- 模拟头像区域 -->
+            <view class="avatar">
+                <!-- 使用简单的 emoji 或图标作为占位符 -->
+                <text class="iconfont icon-user">👤</text>
+            </view>
+            <view class="details">
+                <view class="username">{{currentUser.username || '校园跑腿用户'}}</view>
+                <view class="status">✅ 已认证学生 | ID: {{userId}}</view>
+            </view>
+        </view>
+
+        <!-- 统计数据区域 -->
+        <view class="stats-area">
+            <view class="stat-item">
+                <view class="stat-value">{{currentUser.score || '85'}}</view>
+                <view class="stat-label">信誉积分</view>
+            </view>
+            <view class="stat-divider"></view>
+            <!-- 订单数量统计（点击可切换Tab） -->
+            <view class="stat-item" bindtap="handleTabChange" data-tab="published">
+                <view class="stat-value">{{publishedCount}}</view>
+                <view class="stat-label">已发布订单</view>
+            </view>
+            <view class="stat-divider"></view>
+            <view class="stat-item" bindtap="handleTabChange" data-tab="accepted">
+                <view class="stat-value">{{acceptedCount}}</view>
+                <view class="stat-label">已接受任务</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 订单列表 Tab 切换卡片 -->
+    <view class="order-tabs-card">
+        <view class="tab-item {{activeTab === 'published' ? 'active-tab' : ''}}" 
+              bindtap="handleTabChange" data-tab="published">
+            我发布的 ({{publishedCount}})
+        </view>
+        <view class="tab-item {{activeTab === 'accepted' ? 'active-tab' : ''}}" 
+              bindtap="handleTabChange" data-tab="accepted">
+            我接受的 ({{acceptedCount}})
+        </view>
+    </view>
+
+    <!-- 订单列表展示 -->
+    <view class="order-list">
+        <block wx:if="{{displayOrders.length > 0}}">
+            <!-- 循环展示订单列表，每个订单是一个卡片 -->
+            <view wx:for="{{displayOrders}}" wx:key="id" class="order-item-card">
+                <view class="order-header">
+                    <text class="order-type">#{{item.type === 'RUN_TASK' ? '跑腿任务' : '其他'}}</text>
+                    <!-- 订单状态使用不同的样式类 (status-PENDING, status-ACCEPTED 等) -->
+                    <text class="order-status status-{{item.status}}">{{item.status}}</text>
+                </view>
+                <view class="order-body">
+                    <view class="description">{{item.description}}</view>
+                    <view class="location-info">
+                        <text class="pickup">取: {{item.pickupLocation}}</text>
+                        <text class="delivery">送: {{item.deliveryLocation}}</text>
+                    </view>
+                    <view class="price-info">
+                        <text class="price">佣金: ¥{{item.price.toFixed(2)}}</text>
+                    </view>
+                </view>
+                <!-- 订单操作按钮 -->
+                <view class="order-actions">
+    <button wx:if="{{activeTab === 'published' && item.status === 'PENDING'}}" 
+            class="action-btn cancel-btn" data-order-id="{{item.id}}" data-action="cancel" bindtap="handleAction">取消</button>
+    
+    <button wx:if="{{activeTab === 'published' && item.status === 'DELIVERING'}}" 
+            class="action-btn complete-btn" data-order-id="{{item.id}}" data-action="settle" bindtap="handleAction">结算</button>
+
+    <button wx:if="{{activeTab === 'accepted' && item.status === 'ACCEPTED'}}" 
+            class="action-btn complete-btn" data-order-id="{{item.id}}" data-action="complete" bindtap="handleAction">送达</button>
+</view>
+            </view>
+        </block>
+        <view wx:else class="empty-state">
+            <text>您还没有{{activeTab === 'published' ? '发布' : '接受'}}任何订单哦~</text>
+        </view>
+    </view>
+
+    <!-- 退出登录按钮 -->
+    <button class="logout-btn" bindtap="handleLogout">
+        退出登录
+    </button>
+</block>
+
+
+</view>

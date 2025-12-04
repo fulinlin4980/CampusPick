@@ -1,0 +1,77 @@
+/* components/button/button.wxss */
+/* 基础样式 (对应 baseStyles) */
+.btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16rpx; /* rounded-lg */
+    font-weight: 500;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    line-height: 1; /* 重置微信 button 默认行高 */
+    margin: 0; /* 重置微信 button 默认外边距 */
+  }
+  
+  /* 禁用状态 */
+  .btn-base[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* 尺寸 sizes */
+  .btn-sm {
+    padding: 10rpx 20rpx; /* px-3 py-1.5 */
+    font-size: 24rpx; /* text-xs */
+  }
+  .btn-md {
+    padding: 16rpx 32rpx; /* px-4 py-2 */
+    font-size: 28rpx; /* text-sm */
+  }
+  .btn-lg {
+    padding: 24rpx 48rpx; /* px-6 py-3 */
+    font-size: 32rpx; /* text-base */
+    width: 100%; /* w-full */
+  }
+  
+  /* 颜色 variants */
+  
+  /* primary */
+  .btn-primary {
+    background-color: #2563eb; /* bg-blue-600 */
+    color: #fff;
+    box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.1);
+  }
+  .btn-primary.btn-hover {
+    background-color: #1d4ed8; /* hover:bg-blue-700 */
+  }
+  
+  /* secondary */
+  .btn-secondary {
+    background-color: #10b981; /* bg-emerald-500 */
+    color: #fff;
+    box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.1);
+  }
+  .btn-secondary.btn-hover {
+    background-color: #059669; /* hover:bg-emerald-600 */
+  }
+  
+  /* danger */
+  .btn-danger {
+    background-color: #ef4444; /* bg-red-500 */
+    color: #fff;
+    box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.1);
+  }
+  .btn-danger.btn-hover {
+    background-color: #dc2626; /* hover:bg-red-600 */
+  }
+  
+  /* ghost */
+  .btn-ghost {
+    background-color: transparent;
+    color: #4b5563; /* text-gray-600 */
+    border: 1rpx solid transparent;
+  }
+  .btn-ghost.btn-hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+    color: #1f2937;
+  }

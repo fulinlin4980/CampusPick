@@ -1,0 +1,58 @@
+/* pages/register/register.wxss */
+.register-container {
+    padding: 60rpx 40rpx;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+}
+
+.register-form-box {
+    background-color: #fff;
+    padding: 60rpx 40rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-title {
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 50rpx;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #e5e7eb;
+    margin-bottom: 40rpx;
+    padding-bottom: 10rpx;
+}
+
+.input-label {
+    width: 100rpx;
+    font-size: 30rpx;
+    color: #4b5563;
+    flex-shrink: 0;
+    font-weight: 500;
+}
+
+.register-input {
+    flex-grow: 1;
+    height: 80rpx;
+    padding: 0 20rpx;
+    font-size: 32rpx;
+}
+
+.register-button-submit {
+    margin-top: 50rpx !important;
+}
+
+.login-link {
+    font-size: 28rpx;
+    color: #3b82f6;
+    text-align: center;
+    margin-top: 30rpx;
+    padding: 10rpx;
+}

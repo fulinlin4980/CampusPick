@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/publish/publish",
+    "pages/profile/profile",
+    "pages/orderDetail/orderDetail",
+    "pages/register/register",
+    "pages/my",
+    "pages/taskProcess/taskProcess",
+    "pages/confirmAccept/confirmAccept",
+    "pages/settlement/settlement"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园代拿",
+    "navigationBarBackgroundColor": "#3A85FF",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "任务大厅",
+        "iconPath": "images/tab_home.png",
+        "selectedIconPath": "images/tab_home_active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布任务",
+        "iconPath": "images/tab_publish.png",
+        "selectedIconPath": "images/tab_publish_active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab_profile.png",
+        "selectedIconPath": "images/tab_profile_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

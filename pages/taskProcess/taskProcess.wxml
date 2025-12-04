@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="header">任务处理 - 确认送达 (需拍照)</view>
+    
+    <view class="tip-card">
+        <text class="tip-text">请拍摄一张包含货物和收货地点/收件人的照片，作为送达凭证。</text>
+    </view>
+
+    <view class="photo-uploader">
+        <block wx:if="{{!photoUrl}}">
+            <view class="upload-placeholder" bindtap="chooseImage">
+                <text class="plus-icon">+</text>
+                <text class="upload-text">点击上传送达照片</text>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="image-preview-wrapper">
+                <image class="uploaded-image" src="{{photoUrl}}" mode="aspectFill" bindtap="previewImage" />
+                <view class="remove-btn" bindtap="removeImage">移除</view>
+            </view>
+        </block>
+    </view>
+
+    <view class="remarks-area">
+        <textarea 
+            placeholder="填写备注信息（选填，如：已放到前台）"
+            maxlength="100"
+            value="{{remarks}}"
+            bindinput="handleRemarksInput"
+        />
+        <text class="word-count">{{remarks.length}}/100</text>
+    </view>
+
+    <button 
+        class="submit-btn" 
+        bindtap="submitAction" 
+        loading="{{isSubmitting}}"
+        disabled="{{!photoUrl || isSubmitting}}"
+    >
+        {{isSubmitting ? '提交中...' : '确认送达并完成任务'}}
+    </button>
+</view>

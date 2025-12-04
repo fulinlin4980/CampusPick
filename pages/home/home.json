@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "任务大厅",
+    "usingComponents": {
+      "taskCard": "../../components/taskCard/taskCard"
+    },
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+  }

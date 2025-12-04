@@ -1,0 +1,111 @@
+<view class="publish-page-container">
+
+<view class="header-box">
+  <text class="header-title">发布需求</text>
+</view>
+
+<view class="form-wrapper">
+  
+  <view class="card-section">
+    <view class="section-title">需求类型</view>
+    <radio-group data-field="type" bindchange="handleInputChange" class="type-selection">
+      <label class="radio-label {{type === 'express' ? 'radio-checked' : ''}}">
+        <radio value="express" checked="{{type === 'express'}}" /> 快递代取
+      </label>
+      <label class="radio-label {{type === 'food' ? 'radio-checked' : ''}}">
+        <radio value="food" checked="{{type === 'food'}}" /> 外卖代拿
+      </label>
+      <label class="radio-label {{type === 'item' ? 'radio-checked' : ''}}">
+        <radio value="item" checked="{{type === 'item'}}" /> 物品代办
+      </label>
+    </radio-group>
+  </view>
+  
+  <view class="card-section" wx:if="{{type === 'express'}}">
+    <view class="section-title">快递信息</view>
+    <view class="form-group">
+      <label class="form-label">取件码</label>
+      <input 
+        placeholder="请输入取件码/信息 (仅接单人可见)"
+        value="{{pickupCode}}"
+        data-field="pickupCode"
+        bindinput="handleInputChange"
+        class="simple-input"
+      />
+      <view class="input-hint">此信息仅在订单被接单后，对接单人可见，保障您的信息安全。</view>
+    </view>
+  </view>
+  
+  <view class="card-section">
+    <view class="section-title">取送路线 (已改为手动输入)</view>
+    
+    <view class="form-group">
+      <label class="form-label">取货地点</label>
+      <input 
+        placeholder="请输入取货地点（如：菜鸟驿站）"
+        value="{{pickup}}"
+        data-field="pickup"
+        bindinput="handleInputChange"
+        class="simple-input"
+      />
+    </view>
+
+    <view class="form-group">
+      <label class="form-label">送达地点</label>
+      <input 
+        placeholder="请输入送达地点（如：梅园2栋301室）"
+        value="{{delivery}}"
+        data-field="delivery"
+        bindinput="handleInputChange"
+        class="simple-input"
+      />
+    </view>
+  </view>
+
+  <view class="card-section">
+    <view class="section-title">订单详情</view>
+
+    <view class="form-group">
+      <label class="form-label">跑腿费 (元)</label>
+      <view class="input-with-icon">
+        <text class="input-icon">¥</text>
+        <input 
+          type="digit" 
+          min="0.5" 
+          placeholder="0.00"
+          value="{{price}}"
+          data-field="price"
+          bindinput="handleInputChange"
+          class="price-input"
+        />
+      </view>
+      <view class="input-hint">建议: 校内小件一般 2-5 元</view>
+    </view>
+
+    <view class="form-group">
+      <label class="form-label">备注信息</label>
+      <textarea 
+        placeholder="例如：快递取件码，或者具体的外卖口味要求..."
+        value="{{desc}}"
+        data-field="desc"
+        bindinput="handleInputChange"
+        maxlength="-1"
+        auto-height
+        class="description-textarea"
+      />
+    </view>
+  </view>
+
+  <view class="submit-btn-wrapper">
+    <mp-button 
+      size="lg" 
+      variant="primary" 
+      bind:tap="handleSubmit" 
+      class="shadow-btn"
+    >
+      立即发布
+    </mp-button>
+  </view>
+  
+</view>
+</view>

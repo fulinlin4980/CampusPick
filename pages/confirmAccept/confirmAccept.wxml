@@ -1,0 +1,53 @@
+<view class="detail-container">
+    
+    <view class="header-section">
+        <text class="page-title">确认接单</text>
+        <text class="page-subtitle">请确认任务信息，接单后务必完成</text>
+    </view>
+
+    <view class="detail-card" wx:if="{{task}}">
+        <view class="card-title">订单概览</view>
+        
+        <view class="detail-item">
+            <text class="item-label">任务类型:</text>
+            <text class="item-value type-tag">#{{task.type || '跑腿任务'}}</text>
+        </view>
+        <view class="detail-item">
+            <text class="item-label">跑腿费用:</text>
+            <text class="item-value price-text">¥{{task.price ? task.price.toFixed(2) : '0.00'}}</text>
+        </view>
+
+        <view class="detail-location-group">
+            <view class="location-item pickup">
+                <view class="location-tag tag-start">取</view>
+                <text class="location-text">{{task.pickupLocation || '未填写'}}</text>
+            </view>
+            <view class="location-item delivery">
+                <view class="location-tag tag-end">送</view>
+                <text class="location-text">{{task.deliveryLocation || '未填写'}}</text>
+            </view>
+        </view>
+
+        <view class="detail-description">
+            <view class="description-label">备注/详细要求:</view>
+            <view class="description-content">{{task.description || '无'}}</view>
+        </view>
+    </view>
+    
+    <view class="warning-footer">
+        <text>⚠ 风险提示：确认接单即承诺在约定时间内完成任务。</text>
+    </view>
+
+    <view class="action-footer">
+        <button 
+            class="confirm-btn" 
+            type="primary"
+            bindtap="confirmAccept"
+            loading="{{isActionLoading}}"
+            disabled="{{isActionLoading || !task}}"
+        >
+            {{isActionLoading ? '正在处理...' : '确认接单'}}
+        </button>
+    </view>
+    
+</view>

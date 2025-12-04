@@ -1,0 +1,52 @@
+<view class="register-container">
+    <view class="register-form-box">
+        <text class="form-title">欢迎注册跑腿校园</text>
+
+        <view class="input-group">
+            <text class="input-label">账号</text>
+            <input 
+              class="register-input" 
+              placeholder="请输入用户名/手机号" 
+              data-field="username" 
+              bindinput="handleInput" 
+              value="{{username}}"
+              type="text"
+            />
+        </view>
+
+        <view class="input-group">
+            <text class="input-label">密码</text>
+            <input 
+              class="register-input" 
+              placeholder="请输入密码（至少6位）" 
+              data-field="password" 
+              bindinput="handleInput" 
+              value="{{password}}"
+              password
+            />
+        </view>
+
+        <view class="input-group">
+            <text class="input-label">昵称</text>
+            <input 
+              class="register-input" 
+              placeholder="请输入您的昵称" 
+              data-field="name" 
+              bindinput="handleInput" 
+              value="{{name}}"
+              type="text"
+            />
+        </view>
+        
+        <mp-button 
+            variant="primary" 
+            size="large" 
+            bind:tap="handleRegister"
+            class="register-button-submit"
+        >
+            立即注册
+        </mp-button>
+        
+        <text class="login-link" bindtap="goToLogin">已有账号？返回登录</text>
+    </view>
+</view>

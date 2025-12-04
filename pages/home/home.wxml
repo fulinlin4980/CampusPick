@@ -1,0 +1,53 @@
+<view class="container">
+  
+  <view class="header-sticky">
+    <text class="page-title">任务大厅</text>
+
+    <view class="search-box">
+      <image class="search-icon" src="/images/search.png" mode="aspectFit" />
+      <input 
+        type="text" 
+        placeholder="搜索食堂、宿舍..." 
+        class="search-input"
+        value="{{filterText}}"
+        bindinput="handleSearchInput"
+      />
+    </view>
+    
+    <scroll-view class="hot-tags-scroll" scroll-x enable-flex>
+      <text class="tag-label">热门筛选:</text>
+      <block wx:for="{{hotTags}}" wx:key="*this">
+        <text 
+          class="hot-tag {{filterText === item ? 'tag-active' : ''}}" 
+          data-tag="{{item}}" 
+          bindtap="handleTagClick"
+        >
+          {{item}}
+        </text>
+      </block>
+    </scroll-view>
+  </view>
+
+  <scroll-view scroll-y class="task-list-scroll">
+    <view class="task-list-content">
+      <block wx:if="{{displayTaskList.length > 0}}">
+        <block wx:for="{{displayTaskList}}" wx:key="id">
+          <taskCard 
+            task="{{item}}" 
+            data-id="{{item.id}}" 
+            catchtap="goToDetail"           />
+        </block>
+      </block>
+      
+      <view class="empty-placeholder" wx:else>
+        <image src="/images/filter.png" class="empty-icon" mode="aspectFit" />
+        <text>暂无待接订单</text>
+        <text class="empty-subtext">尝试换个关键词搜索或等待新任务吧</text>
+      </view>
+    </view>
+    
+    <view class="loading-more" wx:if="{{displayTaskList.length > 0 && loading}}">
+      <text>正在加载...</text>
+    </view>
+  </scroll-view>
+</view>

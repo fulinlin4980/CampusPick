@@ -1,0 +1,85 @@
+<view class="detail-container">
+
+<view class="status-card status-{{task.status}}">
+  <view class="status-icon">
+    <text wx:if="{{task.status === 'PENDING'}}">⏳</text>
+    <text wx:elif="{{task.status === 'ACCEPTED'}}">🚚</text>
+    <text wx:elif="{{task.status === 'DELIVERED'}}">✅</text>
+    <text wx:elif="{{task.status === 'COMPLETED'}}">🎉</text>
+    <text wx:elif="{{task.status === 'CANCELLED'}}">❌</text>
+  </view>
+  <view class="status-text-area">
+    <view class="status-main-text">{{task.status === 'PENDING' ? '等待接单中' : task.status}}</view>
+    <view class="status-sub-text">
+      {{task.status === 'PENDING' ? '请耐心等待爱心跑腿员出现' : ''}}
+      {{task.status === 'ACCEPTED' ? '跑腿员正在路上，请保持电话畅通' : ''}}
+      {{task.status === 'DELIVERED' ? '跑腿员已送达，请确认收货' : ''}}
+      {{task.status === 'COMPLETED' ? '任务已圆满完成！' : ''}}
+    </view>
+  </view>
+</view>
+
+<view class="detail-card">
+  <view class="card-title">订单信息</view>
+  <view class="detail-item">
+    <text class="item-label">任务类型:</text>
+    <text class="item-value type-tag">#{{task.type || '跑腿任务'}}</text>
+  </view>
+  <view class="detail-item">
+    <text class="item-label">跑腿费用:</text>
+    <text class="item-value price-text">¥{{task.price ? task.price.toFixed(2) : '0.00'}}</text>
+  </view>
+
+  <view class="detail-location-group">
+    <view class="location-item pickup">
+      <view class="location-tag tag-start">取</view>
+      <text class="location-text">{{task.pickupLocation || '未填写'}}</text>
+    </view>
+    <view class="location-item delivery">
+      <view class="location-tag tag-end">送</view>
+      <text class="location-text">{{task.deliveryLocation || '未填写'}}</text>
+    </view>
+  </view>
+
+  <view class="detail-description">
+    <view class="description-label">备注/描述:</view>
+    <view class="description-content">{{task.description || '无'}}</view>
+  </view>
+</view>
+
+<view class="user-card">
+  <view class="card-title">用户信息</view>
+  <view class="user-info-row">
+    <view class="user-role">发布者:</view>
+    <text class="user-name">{{task.creatorName || '用户ID: ' + task.creatorId}}</text>
+  </view>
+  <view class="user-info-row" wx:if="{{task.acceptorId}}">
+    <view class="user-role">接单人:</view>
+    <text class="user-name">{{task.acceptorName || '用户ID: ' + task.acceptorId}}</text>
+  </view>
+</view>
+
+<view style="height: 120rpx;"></view>
+
+</view> <view class="action-bar-wrapper">
+
+<button 
+  wx:if="{{task.status === 'PENDING'}}" 
+  class="action-button primary-button"
+  bindtap="handleAcceptOrder" 
+  loading="{{isActionLoading}}"
+  disabled="{{isActionLoading}}"
+>
+  确认接单
+</button>
+
+<task-card 
+  wx:if="{{task.status !== 'PENDING'}}"
+  task="{{task}}" 
+  currentUserId="{{currentUserId}}" 
+  isActionLoading="{{isActionLoading}}"
+  requirePhoto="{{requirePhoto}}"
+  bind:order-action="handleAction" 
+/> 
+
+</view>

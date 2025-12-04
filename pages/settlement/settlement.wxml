@@ -1,0 +1,67 @@
+<view class="container">
+    
+    <view class="settlement-card">
+        
+        <view class="header-status">
+            <text class="status-icon">✅</text>
+            <text class="status-text">任务已送达，请确认结算</text>
+        </view>
+        
+        <view class="section-title">订单详情</view>
+        
+        <view class="info-cell">
+            <text class="cell-label">任务 ID:</text>
+            <text class="cell-content primary">{{order.id}}</text>
+        </view>
+        <view class="info-cell multiline">
+            <text class="cell-label">描述:</text>
+            <text class="cell-content">{{order.description}}</text>
+        </view>
+
+    </view>
+    
+    <view class="settlement-card">
+        <view class="section-title">跑腿员信息</view>
+        
+        <view class="info-cell">
+            <text class="cell-label">姓名:</text>
+            <text class="cell-content">👤 {{order.runnerName || '未知跑腿员'}}</text>
+        </view>
+        <view class="info-cell no-border">
+            <text class="cell-label">联系方式:</text>
+            <text class="cell-content contact-info">📞 {{order.runnerContact || '无'}}</text>
+        </view>
+    </view>
+
+    <view class="settlement-card">
+        <view class="section-title">送达凭证</view>
+        
+        <view class="photo-wrapper" bindtap="previewImage">
+            <image wx:if="{{order.photoBase64}}" 
+                   class="delivery-image" 
+                   src="data:image/jpeg;base64,{{order.photoBase64}}" 
+                   mode="aspectFill" />
+            <view wx:else class="placeholder-image">（点击查看大图）</view>
+        </view>
+        
+        <view wx:if="{{order.remarks}}" class="remarks-box">
+            <text class="remarks-label">备注：</text>
+            <text class="remarks-content">{{order.remarks}}</text>
+        </view>
+    </view>
+
+    <view class="bottom-bar">
+        <view class="price-display">
+            <text class="price-label">本次结算佣金：</text>
+            <text class="price-value large">¥{{order.price ? order.price.toFixed(2) : '0.00'}}</text>
+        </view>
+        <button 
+            class="confirm-btn" 
+            bindtap="confirmSettlement" 
+            loading="{{isSubmitting}}"
+            disabled="{{!order.id || isSubmitting}}"
+        >
+            {{isSubmitting ? '结算中...' : '确认结算并完成订单'}}
+        </button>
+    </view>
+</view>

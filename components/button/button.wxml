@@ -1,0 +1,8 @@
+<button 
+  class="btn-base btn-{{variant}} btn-{{size}} {{className}}"
+  disabled="{{disabled}}"
+  bindtap="handleTap"
+  hover-class="btn-hover"
+>
+  <slot></slot>
+</button>
